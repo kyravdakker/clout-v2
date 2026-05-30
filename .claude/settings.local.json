@@ -7,7 +7,10 @@
       "Bash(curl -s http://localhost:4321)",
       "Bash(node -e \"const p = require\\('puppeteer'\\); console.log\\('ok'\\)\")",
       "Bash(node -e \"const p = require\\('playwright'\\); console.log\\('ok'\\)\")",
-      "Bash(python3 *)"
+      "Bash(python3 *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
     ]
   }
 }

@@ -8,50 +8,67 @@ const services = [
 ---
 
 <section class="services" id="services">
-  <div class="services__header">
-    <span class="services__label">What we do</span>
-  </div>
+  <div class="services__inner">
 
-  <ul class="services__list">
-    {services.map((s) => (
-      <li class="service-row">
-        <button class="service-row__header" aria-expanded="false">
-          <span class="service-row__num">{s.number}</span>
-          <span class="service-row__name">{s.name}</span>
-          <span class="service-row__toggle" aria-hidden="true">+</span>
-        </button>
-        <div class="service-row__body">
-          <p class="service-row__desc">{s.desc}</p>
-        </div>
-      </li>
-    ))}
-  </ul>
+    <div class="services__left">
+      <span class="services__label">What we do</span>
+      <p class="services__intro">Four ways we help brands understand what actually works.</p>
+    </div>
+
+    <ul class="services__list">
+      {services.map((s) => (
+        <li class="service-row">
+          <button class="service-row__header" aria-expanded="false">
+            <span class="service-row__num">{s.number}</span>
+            <span class="service-row__name">{s.name}</span>
+            <span class="service-row__toggle" aria-hidden="true">+</span>
+          </button>
+          <div class="service-row__body">
+            <p class="service-row__desc">{s.desc}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+  </div>
 </section>
 
 <style>
   .services {
-    background: var(--cloud-white);
-    padding: 4rem 3rem 5rem;
+    background: #FAFAF7;
+    padding: 7.5rem 3rem;
+    border-top: 1px solid #DADADA;
   }
 
-  .services__header {
+  .services__inner {
     max-width: 1280px;
-    margin: 0 auto 2rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    gap: 80px;
+    align-items: start;
   }
 
   .services__label {
-    font-size: 0.6rem;
+    display: block;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--charcoal);
-    opacity: 0.4;
+    color: #999999;
+    margin-bottom: 1.5rem;
+  }
+
+  .services__intro {
+    font-family: "Neue Montreal", var(--font-sans);
+    font-weight: 400;
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.65;
   }
 
   .services__list {
     list-style: none;
-    max-width: 1280px;
-    margin: 0 auto;
     border-top: 1px solid rgba(203, 190, 255, 0.35);
   }
 
@@ -194,6 +211,10 @@ const services = [
   @media (max-width: 900px) {
     .services {
       padding: 5rem 1.5rem 7rem;
+    }
+    .services__inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
     }
     .service-row__header {
       gap: 1.5rem;

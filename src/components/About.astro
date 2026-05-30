@@ -5,7 +5,7 @@
   <div class="about__inner">
     <span class="about__label">Our approach</span>
     <blockquote class="about__quote">
-      We study culture<br />before we build strategy.
+      We study attention<br />before we build strategy.
     </blockquote>
     <p class="about__sub">
       CLOUT sits at the intersection of data and instinct. We read the numbers
@@ -16,46 +16,42 @@
 
 <style>
   .about {
-    background: #F3F1F8;
-    min-height: 80svh;
-    display: flex;
-    align-items: center;
-    padding: 9rem 3rem;
-    border-top: 1px solid rgba(203, 190, 255, 0.35);
-    border-bottom: 1px solid rgba(203, 190, 255, 0.35);
+    background: #111111;
+    padding: 12rem 8vw;
+    margin: 0;
   }
 
   .about__inner {
-    max-width: 1100px;
+    max-width: 1280px;
     margin: 0 auto;
     width: 100%;
   }
 
   .about__label {
     display: block;
-    font-size: 0.6rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--charcoal);
-    opacity: 0.4;
-    margin-bottom: 3.5rem;
+    color: rgba(203, 190, 255, 0.5);
+    margin-bottom: 2.5rem;
   }
 
   .about__quote {
-    font-family: var(--font-playfair);
-    font-size: clamp(3rem, 7vw, 9rem);
-    font-weight: 700;
-    font-style: italic;
+    font-family: "Neue Montreal", var(--font-sans);
+    font-size: clamp(2.2rem, 5vw, 4.2rem);
+    text-indent: 15vw;
+    font-weight: 800;
+    font-style: normal;
     line-height: 1.1;
-    color: var(--charcoal);
-    letter-spacing: -0.02em;
+    color: #CBBEFF;
+    letter-spacing: -0.01em;
     border: none;
     padding: 0;
     margin: 0 0 3.5rem;
-    max-width: 1000px;
+    max-width: 900px;
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.97);
     transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 1s cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -66,17 +62,17 @@
   }
 
   .about__sub {
+    font-family: "Neue Montreal", var(--font-sans);
     font-size: clamp(0.9rem, 1.4vw, 1.05rem);
     font-weight: 400;
     line-height: 1.85;
-    color: var(--charcoal);
-    opacity: 0.5;
-    max-width: 480px;
+    color: rgba(250, 250, 247, 0.6);
+    max-width: 55ch;
   }
 
   @media (max-width: 900px) {
     .about {
-      padding: 6rem 1.5rem;
+      padding: 7rem 6vw;
     }
   }
 </style>
