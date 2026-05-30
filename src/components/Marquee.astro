@@ -3,9 +3,10 @@
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee__track">
-    <span class="marquee__text">STRATEGY&nbsp;&nbsp;·&nbsp;&nbsp;CULTURE&nbsp;&nbsp;·&nbsp;&nbsp;INSIGHTS&nbsp;&nbsp;·&nbsp;&nbsp;INTELLIGENCE&nbsp;&nbsp;·&nbsp;&nbsp;IMPACT&nbsp;&nbsp;·&nbsp;&nbsp;COMMUNICATIONS&nbsp;&nbsp;·&nbsp;&nbsp;</span>
-    <span class="marquee__text">STRATEGY&nbsp;&nbsp;·&nbsp;&nbsp;CULTURE&nbsp;&nbsp;·&nbsp;&nbsp;INSIGHTS&nbsp;&nbsp;·&nbsp;&nbsp;INTELLIGENCE&nbsp;&nbsp;·&nbsp;&nbsp;IMPACT&nbsp;&nbsp;·&nbsp;&nbsp;COMMUNICATIONS&nbsp;&nbsp;·&nbsp;&nbsp;</span>
-    <span class="marquee__text">STRATEGY&nbsp;&nbsp;·&nbsp;&nbsp;CULTURE&nbsp;&nbsp;·&nbsp;&nbsp;INSIGHTS&nbsp;&nbsp;·&nbsp;&nbsp;INTELLIGENCE&nbsp;&nbsp;·&nbsp;&nbsp;IMPACT&nbsp;&nbsp;·&nbsp;&nbsp;COMMUNICATIONS&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+    <span class="marquee__text">Creative Intelligence Studio — Amsterdam —&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span class="marquee__text">Creative Intelligence Studio — Amsterdam —&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span class="marquee__text">Creative Intelligence Studio — Amsterdam —&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span class="marquee__text">Creative Intelligence Studio — Amsterdam —&nbsp;&nbsp;&nbsp;&nbsp;</span>
   </div>
 </div>
 
@@ -13,35 +14,29 @@
   .marquee {
     width: 100%;
     overflow: hidden;
-    background: var(--charcoal);
+    background: #FAFAF7;
     padding: 1rem 0;
-    border-bottom: 1px solid rgba(203, 190, 255, 0.35);
   }
 
   .marquee__track {
     display: flex;
     white-space: nowrap;
-    animation: marqueeScroll 40s linear infinite;
+    animation: marqueeScroll 60s linear infinite;
     width: max-content;
   }
 
   .marquee__text {
     font-family: var(--font-sans);
-    font-size: 0.6rem;
-    font-weight: 700;
-    font-variant: small-caps;
-    letter-spacing: 0.22em;
-    color: var(--cloud-white);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #DADADA;
     display: inline-block;
-    padding-right: 0;
-  }
-
-  .marquee:hover .marquee__track {
-    animation-play-state: paused;
   }
 
   @keyframes marqueeScroll {
     from { transform: translateX(0); }
-    to   { transform: translateX(-33.333%); }
+    to   { transform: translateX(-25%); }
   }
 </style>

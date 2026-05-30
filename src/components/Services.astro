@@ -1,9 +1,9 @@
 ---
 const services = [
-  { number: "01", name: "Strategy" },
-  { number: "02", name: "Communications" },
-  { number: "03", name: "Audience Intelligence" },
-  { number: "04", name: "Cultural Insights" },
+  { number: "01", name: "Strategy", desc: "We translate data and cultural signals into clear brand strategy. No guesswork, just direction that sticks." },
+  { number: "02", name: "Communications", desc: "From campaign concepts to content strategy, we build communications that land with the right audience at the right moment." },
+  { number: "03", name: "Audience Intelligence", desc: "We analyze who your audience really is, what drives their behavior, and what keeps their attention." },
+  { number: "04", name: "Cultural Insights", desc: "We track cultural shifts before they become trends, so your brand stays relevant instead of catching up." },
 ];
 ---
 
@@ -15,9 +15,14 @@ const services = [
   <ul class="services__list">
     {services.map((s) => (
       <li class="service-row">
-        <span class="service-row__num">{s.number}</span>
-        <span class="service-row__name">{s.name}</span>
-        <span class="service-row__arrow" aria-hidden="true">→</span>
+        <button class="service-row__header" aria-expanded="false">
+          <span class="service-row__num">{s.number}</span>
+          <span class="service-row__name">{s.name}</span>
+          <span class="service-row__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="service-row__body">
+          <p class="service-row__desc">{s.desc}</p>
+        </div>
       </li>
     ))}
   </ul>
@@ -26,12 +31,12 @@ const services = [
 <style>
   .services {
     background: var(--cloud-white);
-    padding: 7rem 3rem 9rem;
+    padding: 4rem 3rem 5rem;
   }
 
   .services__header {
     max-width: 1280px;
-    margin: 0 auto 4rem;
+    margin: 0 auto 2rem;
   }
 
   .services__label {
@@ -51,18 +56,10 @@ const services = [
   }
 
   .service-row {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 2.5rem;
-    padding: 2.5rem 0;
     border-bottom: 1px solid rgba(203, 190, 255, 0.35);
-    cursor: default;
-    overflow: hidden;
     opacity: 0;
     transform: translateX(-48px);
-    transition: padding-left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-                opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -76,10 +73,26 @@ const services = [
   .service-row:nth-child(3) { transition-delay: 200ms; }
   .service-row:nth-child(4) { transition-delay: 300ms; }
 
-  .service-row::before {
+  /* Clickable header row */
+  .service-row__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 1.1rem 0;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    overflow: hidden;
+    transition: padding-left 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .service-row__header::before {
     content: '';
     position: absolute;
-    bottom: -1px;
+    bottom: 0;
     left: 0;
     width: 0;
     height: 2px;
@@ -88,7 +101,7 @@ const services = [
     z-index: 1;
   }
 
-  .service-row::after {
+  .service-row__header::after {
     content: '';
     position: absolute;
     top: 0;
@@ -99,15 +112,15 @@ const services = [
     transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .service-row:hover::before {
+  .service-row__header:hover::before {
     width: 100%;
   }
 
-  .service-row:hover::after {
+  .service-row__header:hover::after {
     height: 100%;
   }
 
-  .service-row:hover {
+  .service-row__header:hover {
     padding-left: 1.25rem;
   }
 
@@ -123,13 +136,13 @@ const services = [
     transition: opacity 0.3s ease;
   }
 
-  .service-row:hover .service-row__num {
+  .service-row__header:hover .service-row__num {
     opacity: 0.7;
   }
 
   .service-row__name {
     font-family: var(--font-sans);
-    font-size: clamp(2.8rem, 7vw, 8rem);
+    font-size: 3.5vw;
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 1;
@@ -138,40 +151,73 @@ const services = [
     transition: color 0.3s ease;
   }
 
-  .service-row:hover .service-row__name {
+  .service-row__header:hover .service-row__name {
     color: rgba(17, 17, 17, 0.75);
   }
 
-  .service-row__arrow {
-    font-size: clamp(1.2rem, 2.5vw, 2.5rem);
+  .service-row__toggle {
+    font-size: 1.4rem;
+    font-weight: 300;
     color: var(--charcoal);
-    opacity: 0;
-    transform: translateX(-12px);
-    transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity: 0.35;
     flex-shrink: 0;
+    line-height: 1;
+    transition: transform 0.4s ease, opacity 0.3s ease;
   }
 
-  .service-row:hover .service-row__arrow {
-    opacity: 0.4;
-    transform: translateX(0);
+  .service-row__header:hover .service-row__toggle {
+    opacity: 0.6;
+  }
+
+  .service-row.is-open .service-row__toggle {
+    transform: rotate(45deg);
+    opacity: 0.7;
+  }
+
+  /* Accordion body */
+  .service-row__body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .service-row__desc {
+    font-family: "Neue Montreal", var(--font-sans);
+    font-weight: 400;
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.7;
+    padding: 1rem 2rem 1.75rem 4.5rem;
+    max-width: 600px;
   }
 
   @media (max-width: 900px) {
     .services {
       padding: 5rem 1.5rem 7rem;
     }
-    .service-row {
+    .service-row__header {
       gap: 1.5rem;
-      padding: 1.75rem 0;
+      padding: 1rem 0;
     }
-    .service-row:hover {
+    .service-row__header:hover {
       padding-left: 0.5rem;
+    }
+    .service-row__name {
+      font-size: 6vw;
+    }
+    .service-row__toggle {
+      font-size: 1.2rem;
+    }
+    .service-row__desc {
+      padding-left: 2rem;
     }
   }
 </style>
 
 <script>
   const rows = document.querySelectorAll<HTMLElement>(".service-row");
+  const headers = document.querySelectorAll<HTMLElement>(".service-row__header");
+
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -184,4 +230,26 @@ const services = [
     { threshold: 0.15 }
   );
   rows.forEach((row) => io.observe(row));
+
+  headers.forEach((header) => {
+    header.addEventListener("click", () => {
+      const row = header.closest<HTMLElement>(".service-row")!;
+      const body = row.querySelector<HTMLElement>(".service-row__body")!;
+      const isOpen = row.classList.contains("is-open");
+
+      // Close all
+      rows.forEach((r) => {
+        r.classList.remove("is-open");
+        r.querySelector<HTMLElement>(".service-row__body")!.style.maxHeight = "0";
+        r.querySelector<HTMLElement>(".service-row__header")!.setAttribute("aria-expanded", "false");
+      });
+
+      // Open clicked row if it was closed
+      if (!isOpen) {
+        row.classList.add("is-open");
+        body.style.maxHeight = body.scrollHeight + "px";
+        header.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
 </script>
