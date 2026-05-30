@@ -43,8 +43,8 @@
     font-family: var(--font-sans);
     font-weight: 800;
     font-size: 0.72rem;
-    letter-spacing: 0.36em;
-    padding-left: 0.36em;
+    letter-spacing: 0.51em;
+    padding-left: 0.51em;
     color: var(--charcoal);
     text-transform: uppercase;
     transition: opacity 0.2s ease;
@@ -68,10 +68,28 @@
     color: var(--charcoal);
     opacity: 0.45;
     transition: opacity 0.2s ease, color 0.2s ease;
+    position: relative;
+  }
+
+  .nav__links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background: #CBBEFF;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
   }
 
   .nav__links a:hover {
     opacity: 1;
+  }
+
+  .nav__links a:hover::after {
+    transform: scaleX(1);
   }
 
   @media (max-width: 640px) {
