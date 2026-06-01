@@ -12,7 +12,8 @@ const services = [
 
     <div class="services__left">
       <span class="services__label">What we do</span>
-      <p class="services__intro">Four ways we help brands understand what actually works.</p>
+      <p class="services__intro" set:html={`CLOUT is a Creative Intelligence Studio. We research audiences, analyse <span class="highlight">behavioural data</span> and track what’s moving in the world to help brands make <span class="highlight">smarter decisions.</span>`}></p>
+      <p class="services__intro services__intro--gap" set:html={`Whether you need a sharper strategy, a stronger communications approach or a deeper understanding of your audience, we turn <span class="highlight">data and insight</span> into work that actually makes an impact.`}></p>
     </div>
 
     <ul class="services__list">
@@ -44,7 +45,7 @@ const services = [
     max-width: 1280px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 30% 1fr;
+    grid-template-columns: 38% 1fr;
     gap: 80px;
     align-items: start;
   }
@@ -62,9 +63,20 @@ const services = [
   .services__intro {
     font-family: "Neue Montreal", var(--font-sans);
     font-weight: 400;
-    font-size: 15px;
+    font-size: 1.05rem;
     color: #555555;
-    line-height: 1.65;
+    line-height: 1.7;
+  }
+
+  .services__intro--gap {
+    margin-top: 1rem;
+  }
+
+  .highlight {
+    color: #6B5FD4;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: default;
   }
 
   .services__list {
